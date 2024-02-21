@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" />
     <title>Document</title>
+    <style>
+      body {
+        background-color: darkgray;
+      }
+      .zemlja {
+        width: 320px;
+        height: 290px;
+        background-color: aliceblue;
+        font-size: 1.2 em;
+      }
+    </style>
   </head>
   <body>
     <button onclick="showCountries()">Show Countries</button>
@@ -20,16 +31,17 @@
             console.log("Success");
             let countries = JSON.parse(this.response);
             console.log(countries);
-            countries.sort((a,b) => a.name.common < b.name.common ? -1 : 1);
-        countries.forEach((country) => {
-            const countryCard = document.createElement("div");
-            const countryCardFlag = document.createElement('img')
-            countryCard.innerHTML = country.name.common;
-            countryCardFlag.src = country.flags.png;
-            countryCard.appendChild(countryCardFlag);
-            document.getElementById("feed").appendChild(countryCard);
-        });
-        }
+            countries.sort((a, b) => (a.name.common < b.name.common ? -1 : 1));
+            countries.forEach((country) => {
+              const countryCard = document.createElement("div");
+              countryCard.classList.add("aemlja");
+              const countryCardFlag = document.createElement("img");
+              countryCard.innerHTML = country.name.common;
+              countryCardFlag.src = country.flags.png;
+              countryCard.appendChild(countryCardFlag);
+              document.getElementById("feed").appendChild(countryCard);
+            });
+          }
         };
         //dodat komentar
         xhr.send();
